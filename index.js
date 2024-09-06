@@ -1,70 +1,56 @@
 const express = require ('express')
+const path = require('path')
 const app = express();
+app.use(express.json())
 
 
-app.get("/exercicio1/", (req, res) =>{
-    
-    const num1 = req.query.num1
-    const num2 = req.query.num2
-
-    const resultado = Number(num1) + Number(num2)
-    
-    res.json({ message: "A soma dos números é igual a " + resultado});
+app.post("/exercicio1/", (req, res) =>{
+    const {num1, num2} = req.body
+    res.send(`A soma de ${num1} + ${num2} é igual ${num1 + num2}`)
 });
 
-app.get("/exercicio2/", (req, res) =>{
+app.post("/exercicio2/", (req, res) =>{
     
-    const valor = req.query.valor
-    const hora = req.query.hora
-
-    const resultado = Number(valor) * Number(hora)
+    const {valor, hora} = req.body
+    const resultado = valor * hora
+    res.send(`O valor total a ser pago é R$${resultado}`)
     
-    res.json({ message: resultado});
 });
 
-app.get("/exercicio3/", (req, res) =>{
+app.post("/exercicio3/", (req, res) =>{
     
-    const peso1 = req.query.peso1
-    const peso2 = req.query.peso2
-    const peso3 = req.query.peso3
-    const peso4 = req.query.peso4
-    const peso5 = req.query.peso5
+    const {peso1, peso2, peso3, peso4, peso5} = req.body
     
+    const resultado = (peso1+ peso2 + peso3 + peso4 + peso5)/5
 
-    const resultado = Number(peso1) + Number(peso2) + Number(peso3) + Number(peso4) + Number(peso5)
-
-    const media = resultado/5
     
-    res.json({ message: "A média dos pesos é igual a " + media});
+    
+    res.send(`A média dos pesos é igual a ${resultado}`);
 });
 
-app.get("/exercicio4/", (req, res) =>{
+app.post("/exercicio4/", (req, res) =>{
     
-    const C = req.query.C
+    const {C} = req.body
 
-    const A = 9 * Number(C)
-
-    const B = A + 160
-
-    const D = B/5
-
-    const F = D
+    const F = ((9 *C) + 160)/5
     
-    res.json({ message: C + "°C em Fahrenheit é igual a " + F + "°F"});
+
+    
+    res.send(`${C}°C equivalem a °${F}F`);
 });
 
 
 
-app.get("/exercicio5/", (req, res) =>{
+app.post("/exercicio5/", (req, res) =>{
     
-    const milhas = req.query.milhas
-    const kms = 1.60934 * Number(milhas)
+    const {milhas} = req.body
+    const kms = (milhas * 1.60934).toFixed(2)
 
-    
-    res.json({ message: milhas + " milhas são equivalentes a " + kms + "kms"});
+    res.send(`${milhas} milhas equivalem a ${kms} quilômetros`);
 });
 
 
 app.listen(3000, function(){
     console.log("Servidor está rodando na porta 3000!")
 });
+
