@@ -1,19 +1,26 @@
 const express = require ('express')
-const path = require('path')
+const path = require('path');
+const { somar, calcularSalario } = require('./service/exercicios');
 const app = express();
 app.use(express.json())
 
 
 app.post("/exercicio1/", (req, res) =>{
-    const {num1, num2} = req.body
-    res.send(`A soma de ${num1} + ${num2} é igual ${num1 + num2}`)
+    
+
+    const resultado = somar(req.body.num1, req.body.num2);
+    
+    res.status(201).json({resultadoPost: resultado})
+    
+
 });
+
+
 
 app.post("/exercicio2/", (req, res) =>{
     
-    const {valor, hora} = req.body
-    const resultado = valor * hora
-    res.send(`O valor total a ser pago é R$${resultado}`)
+    const salario = calcularSalario(req.body.valor, req.body.horas);
+    res.status(201).json({totalSalario: salario})
     
 });
 
@@ -104,13 +111,14 @@ app.post("/exercicio8/", (req, res) =>{
 
     app.post("/desafio1/", (req, res) =>{
 
-        var {A, B} = req.body
+        var {C} = req.body
         var C = B
         var A = C
         var B = A
+        var depois = {A, B}
 
     
-        res.send(`Valor antes da troca: A = ${A} e B = ${B}. Valor depois da troca: A = ${A} e B = ${B}`)
+        res.send(`Valor antes da troca: ${A}, ${B}. Valor depois da troca: ${depois}`)
     });
 
     app.post("/desafio2/", (req, res) =>{
