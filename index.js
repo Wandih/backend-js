@@ -1,49 +1,40 @@
 const express = require ('express')
 const path = require('path');
-const { somar, calcularSalario } = require('./service/exercicios');
+const { somar, calcularSalario, calcularPeso, converterTemp } = require('./service/exercicios');
 const app = express();
 app.use(express.json())
 
 
 app.post("/exercicio1/", (req, res) =>{
     
-
     const resultado = somar(req.body.num1, req.body.num2);
     
     res.status(201).json({resultadoPost: resultado})
     
-
 });
-
-
 
 app.post("/exercicio2/", (req, res) =>{
     
     const salario = calcularSalario(req.body.valor, req.body.horas);
+
     res.status(201).json({totalSalario: salario})
     
 });
 
 app.post("/exercicio3/", (req, res) =>{
     
-    const {peso1, peso2, peso3, peso4, peso5} = req.body
-    
-    const resultado = (peso1+ peso2 + peso3 + peso4 + peso5)/5
+    const media = calcularPeso(req.body.peso1, req.body.peso2, req.body.peso3, req.body.peso4, req.body.peso5)
 
-    
-    
-    res.send(`A média dos pesos é igual a ${resultado}`);
+    res.status(201).json({totalPeso: media})
+
 });
 
 app.post("/exercicio4/", (req, res) =>{
     
-    const {C} = req.body
-
-    const F = ((9 *C) + 160)/5
+    const F = converterTemp(req.body.C)
     
+    res.status(201).json({tempConv: F})
 
-    
-    res.send(`${C}°C equivalem a °${F}F`);
 });
 
 
