@@ -1,4 +1,4 @@
-const {somar, calcularSalario, calcularPeso} = require ('../service/exercicios');
+const {somar, calcularSalario, calcularPeso, converterMilhas} = require ('../service/exercicios');
 const {describe, it, expect} = require('@jest/globals');
 
 describe('testando a função somar:  ', () =>{
@@ -53,7 +53,7 @@ describe('testando a função somar:  ', () =>{
     })
 })
 
-describe('testando a função calcular:  ', () =>{
+describe('testando a função calcularSalario:  ', () =>{
     it('Multiplicar dois números positivos', () => {
         const resultado = calcularSalario(1, 2);
 
@@ -126,7 +126,9 @@ describe('testando a função calcular:  ', () =>{
         expect(resultado).toBe(-2.2)
     })
 
-    describe('testando a função calcularPeso:  ', () =>{
+})
+
+describe('testando a função calcularPeso:  ', () =>{
         
     it('Calcular a média entre 5 números positivos', () => {
             const resultado = calcularPeso(1, 1, 1, 1, 1);
@@ -310,10 +312,17 @@ describe('testando a função calcular:  ', () =>{
         expect(resultado).toBe(1.1)
     })
 
+ })
 
-    
+describe('testando a função converterMilhas:  ', () =>{
 
+    it('Convertendo un número positivo inteiro', () => {
+        const resultado = converterMilhas(10);
 
+        expect(resultado).toBe(1.60)
     })
 
-})
+
+
+
+ })

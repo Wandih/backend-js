@@ -26,6 +26,13 @@ function converterTemp (C){
     return ((9 * C) + 160)/5;
 }
 
+function converterMilhas (milhas){
+    if(isNaN(milhas)){
+        return 'erro'
+    }
+    return (milhas * 1.60934).toFixed(2)
+}
+
 
 //module.exports = somar // Exportando default, uma única função
-module.exports = {somar, calcularSalario, calcularPeso, converterTemp}
+module.exports = {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas}

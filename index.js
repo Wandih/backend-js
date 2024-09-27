@@ -1,6 +1,6 @@
 const express = require ('express')
 const path = require('path');
-const { somar, calcularSalario, calcularPeso, converterTemp } = require('./service/exercicios');
+const { somar, calcularSalario, calcularPeso, converterTemp, converterMilhas } = require('./service/exercicios');
 const app = express();
 app.use(express.json())
 
@@ -41,10 +41,9 @@ app.post("/exercicio4/", (req, res) =>{
 
 app.post("/exercicio5/", (req, res) =>{
     
-    const {milhas} = req.body
-    const kms = (milhas * 1.60934).toFixed(2)
+    const kms = converterMilhas(req.body.milhas)
 
-    res.send(`${milhas} milhas equivalem a ${kms} quilômetros`);
+    res.status(201).json({totalKms: kms})
 });
 
 app.post("/exercicio6/", (req, res) =>{
