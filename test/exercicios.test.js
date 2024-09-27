@@ -317,9 +317,9 @@ describe('testando a função calcularPeso:  ', () =>{
 describe('testando a função converterMilhas:  ', () =>{
 
     it('Convertendo un número positivo inteiro', () => {
-        const resultado = converterMilhas(10);
+        const resultado = converterMilhas(1);
 
-        expect(resultado).toBe(1.60)
+        expect(resultado).toBe(1.61)
     })
 
 
