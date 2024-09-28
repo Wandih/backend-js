@@ -30,9 +30,51 @@ function converterMilhas (milhas){
     if(isNaN(milhas)){
         return 'erro'
     }
-    return (milhas * 1.60934).toFixed(2)
+    return (milhas * 1.60934)
+}
+
+function converterSec (segundos){
+    if(isNaN(segundos)){
+        return 'erro'
+    }
+    return convert = [
+        (Number(segundos) * 0.01666668), 
+        (Number(segundos) * 0.000277778)
+    ]
+      
+}
+
+function converterKms (kms){
+    if(isNaN(kms)){
+        return 'erro'
+    }
+    return convert = [
+        (Number(kms) * 1000), 
+        (Number(kms) * 100000)
+    ]
+      
+}
+
+function tabuada (num){
+    if(isNaN(num)){
+        return 'erro'
+    }
+    return tab = [
+        (Number(num) * 0), 
+        (Number(num) * 1),
+        (Number(num) * 2), 
+        (Number(num) * 3),
+        (Number(num) * 4), 
+        (Number(num) * 5),
+        (Number(num) * 6), 
+        (Number(num) * 7),
+        (Number(num) * 8), 
+        (Number(num) * 9),
+        (Number(num) * 10)
+    ]
 }
 
 
+
 //module.exports = somar // Exportando default, uma única função
-module.exports = {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas}
+module.exports = {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada}

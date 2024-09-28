@@ -1,6 +1,6 @@
 const express = require ('express')
 const path = require('path');
-const { somar, calcularSalario, calcularPeso, converterTemp, converterMilhas } = require('./service/exercicios');
+const { somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada } = require('./service/exercicios');
 const app = express();
 app.use(express.json())
 
@@ -37,8 +37,6 @@ app.post("/exercicio4/", (req, res) =>{
 
 });
 
-
-
 app.post("/exercicio5/", (req, res) =>{
     
     const kms = converterMilhas(req.body.milhas)
@@ -48,44 +46,23 @@ app.post("/exercicio5/", (req, res) =>{
 
 app.post("/exercicio6/", (req, res) =>{
 
-    const {segundos} = req.body
-    const minutos = (segundos * 0.01666668).toFixed(5)
-    const horas = (segundos * 0.000277778).toFixed(5)
+    const conversao = converterSec(req.body.segundos)
 
-    res.send(`${segundos} segundos equivalem a ${minutos} minutos e a ${horas} horas`)
+    res.status(201).json({conversaoFinal: conversao})
 });
 
 app.post("/exercicio7/", (req, res) =>{
 
-    const {kms} = req.body
-    const metros = kms * 1000 
-    const cms = kms * 100000
+    const convert = converterKms(req.body.kms)
 
-    res.send(`${kms} quilometros equivalem a ${metros} metros e a ${cms} centímetros`)
+    res.status(201).json({terminarConv: convert})
 });
 
 app.post("/exercicio8/", (req, res) =>{
 
-    const {num} = req.body
+    const convert = tabuada(req.body.num)
 
-    res.send({
-        Tabuada:{
-            X0: num * 0,
-            X1: num * 1,
-            X2: num * 2,
-            X3: num * 4,
-            X4: num * 4,
-            X5: num * 5,
-            X6: num * 6,
-            X7: num * 7,
-            X8: num * 8,
-            X9: num * 9,
-            X10: num * 10
-
-        }
-    }
-
-    )
+    res.status(201).json({resultadoTab: convert})
     
     });
 
