@@ -49,8 +49,8 @@ function converterKms (kms){
         return 'erro'
     }
     return convert = [
-        (Number(kms) * 1000), 
-        (Number(kms) * 100000)
+        (Number(kms) * 1000).toFixed(1), 
+        (Number(kms) * 100000).toFixed(1)
     ]
       
 }
@@ -60,21 +60,68 @@ function tabuada (num){
         return 'erro'
     }
     return tab = [
-        (Number(num) * 0), 
-        (Number(num) * 1),
-        (Number(num) * 2), 
-        (Number(num) * 3),
-        (Number(num) * 4), 
-        (Number(num) * 5),
-        (Number(num) * 6), 
-        (Number(num) * 7),
-        (Number(num) * 8), 
-        (Number(num) * 9),
-        (Number(num) * 10)
+        (Number(num) * 0).toFixed(1), 
+        (Number(num) * 1).toFixed(1),
+        (Number(num) * 2).toFixed(1), 
+        (Number(num) * 3).toFixed(1),
+        (Number(num) * 4).toFixed(1), 
+        (Number(num) * 5).toFixed(1),
+        (Number(num) * 6).toFixed(1), 
+        (Number(num) * 7).toFixed(1),
+        (Number(num) * 8).toFixed(1), 
+        (Number(num) * 9).toFixed(1),
+        (Number(num) * 10).toFixed(1)
     ]
 }
 
+function converterAnos (anos){
+    if(isNaN(anos)){
+        return 'erro'
+    }else if(anos <= 0){
+        return 'número inválido'
+    }
+    return convert = [
+        (Number(anos) * 12).toFixed(1), 
+        (Number(anos) * 365).toFixed(1)
+    ]
+      
+}
+
+function mudarValor (A, B){
+    if(isNaN(A) || isNaN(B)){
+        return 'erro'
+    } 
+    return convert = [
+        
+        (A, B),
+        
+        C = A,
+        B = C,
+        A = B,
+
+        (A, B)
+    ] 
+}
+
+function maior (num1, num2){
+    if(isNaN(num1) || isNaN(num2)){
+
+        return 'erro'
+
+    } else if (num1 > num2){
+
+        return num1
+
+    } else if (num1 < num2) {
+
+        return num2
+        
+    } else if (num1 === num2){
+        
+        return num1 && num2
+    }
+}
 
 
 //module.exports = somar // Exportando default, uma única função
-module.exports = {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada}
+module.exports = {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior}

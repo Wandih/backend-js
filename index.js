@@ -1,6 +1,6 @@
 const express = require ('express')
 const path = require('path');
-const { somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada } = require('./service/exercicios');
+const { somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior } = require('./service/exercicios');
 const app = express();
 app.use(express.json())
 
@@ -69,36 +69,25 @@ app.post("/exercicio8/", (req, res) =>{
 
     app.post("/desafio0/", (req, res) =>{
 
-        const {anos} = req.body
-        const meses = anos * 12
-        const dias = anos * 365
+        const converter = converterAnos(req.body.anos)
     
-        res.send(`${anos} anos equivalem a ${meses} meses e a ${dias} dias`)
+        res.status(201).json({resultadoConv: converter})
     });
 
     app.post("/desafio1/", (req, res) =>{
 
-        var {C} = req.body
-        var C = B
-        var A = C
-        var B = A
-        var depois = {A, B}
+        const result = mudarValor(req.body.A, req.body.B)
 
     
-        res.send(`Valor antes da troca: ${A}, ${B}. Valor depois da troca: ${depois}`)
+        res.status(201).json({mudanca: result})
     });
 
     app.post("/desafio2/", (req, res) =>{
 
-        var {num1, num2} = req.body
+        const result = maior(req.body.num1, req.body.num2)
 
-        if(num1 > num2){
-            res.send(`O número ${num1} é maior do que ${num2}`)
-        }else if(num2 > num1){
-            res.send(`O número ${num2} é maior do que ${num1}`)
-        }else{
-            res.send(`O número ${num1} é igual a ${num2}`)
-        }
+        res.status(201).json({resultado: result})
+
     });
 
     app.post("/exercicio9/", (req, res) =>{

@@ -1,4 +1,4 @@
-const {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada} = require ('../service/exercicios');
+const {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior} = require ('../service/exercicios');
 const {describe, it, expect} = require('@jest/globals');
 
 describe('testando a função somar:  ', () =>{
@@ -415,37 +415,37 @@ describe('testando a função converterKms:  ', () =>{
     it('Convertendo um número inteiro positivo', () => {
         const resultado = converterKms(1)
 
-        expect(resultado).toStrictEqual([1000, 100000])
+        expect(resultado).toStrictEqual(["1000.0", "100000.0"])
     })
 
     it('Convertendo um número inteiro negativo', () => {
         const resultado = converterKms(-1)
 
-        expect(resultado).toStrictEqual([-1000, -100000])
+        expect(resultado).toStrictEqual(["-1000.0", "-100000.0"])
     })
 
     it('Convertendo um número positivo com uma única casa decimal', () => {
         const resultado = converterKms(2.5)
 
-        expect(resultado).toStrictEqual([2500, 250000])
+        expect(resultado).toStrictEqual(["2500.0", "250000.0"])
     })
 
     it('Convertendo um número negativo com uma única casa decimal', () => {
         const resultado = converterKms(-2.5)
 
-        expect(resultado).toStrictEqual([-2500, -250000])
+        expect(resultado).toStrictEqual(["-2500.0", "-250000.0"])
     })
 
     it('Convertendo um número positivo com múltiplas casas decimais', () => {
         const resultado = converterKms(2.55)
 
-        expect(resultado).toStrictEqual([2550, 255000])
+        expect(resultado).toStrictEqual(["2550.0", "255000.0"])
     })
 
     it('Convertendo um número negativo com múltiplas casas decimais', () => {
         const resultado = converterKms(-2.55)
 
-        expect(resultado).toStrictEqual([-2550, -255000])
+        expect(resultado).toStrictEqual(["-2550.0", "-255000.0"])
     })
 
     it('Convertendo uma letra', () => {
@@ -462,47 +462,134 @@ describe('testando a função tabuada:  ', () =>{
     it('Tabuada de um número inteiro positivo', () => {
         const resultado = tabuada(1)
 
-        expect(resultado).toStrictEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        expect(resultado).toStrictEqual(["0.0", "1.0", "2.0", "3.0", "4.0", "5.0", "6.0", "7.0", "8.0", "9.0", "10.0"])
     })
 
     it('Tabuada de um número inteiro negativo', () => {
         const resultado = tabuada(-1)
 
-        expect(resultado).toStrictEqual([-0, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10])
+        expect(resultado).toStrictEqual(["0.0", "-1.0", "-2.0", "-3.0", "-4.0", "-5.0", "-6.0", "-7.0", "-8.0", "-9.0", "-10.0"])
     })
 
     it('Tabuada de um número com 1 casa decimal positivo', () => {
         const resultado = tabuada(1.2)
 
-        expect(resultado).toStrictEqual([0, 1.2, 2.4, 3.6, 4.8, 6, 7.2, 8.4, 9.6, 10.8, 12])
+        expect(resultado).toStrictEqual(["0.0", "1.2", "2.4", "3.6", "4.8", "6.0", "7.2", "8.4", "9.6", "10.8", "12.0"])
     })
 
     it('Tabuada de um número com 1 casa decimal negativo', () => {
         const resultado = tabuada(-1.2)
 
-        expect(resultado).toStrictEqual([0, -1.2, -2.4, -3.6, -4.8, -6, -7.2, -8.4, -9.6, -10.8, -12])
+        expect(resultado).toStrictEqual(["0.0", "-1.2", "-2.4", "-3.6", "-4.8", "-6.0", "-7.2", "-8.4", "-9.6", "-10.8", "-12.0"])
+    })
+
+    it('Tabuada de uma letra', () => {
+        const resultado = tabuada('a')
+
+        expect(resultado).toStrictEqual("erro")
+    })
+
+
+})
+
+describe('testando a função converterAnos:  ', () =>{
+
+    it('Convertendo um valor positivo', () => {
+        const resultado = converterAnos(1)
+
+        expect(resultado).toStrictEqual(["12.0", "365.0"])
+    })
+
+    it('Convertendo um valor negativo', () => {
+        const resultado = converterAnos(-1)
+
+        expect(resultado).toStrictEqual("número inválido")
+    })
+
+    it('Convertendo uma letra', () => {
+        const resultado = converterAnos('a')
+
+        expect(resultado).toStrictEqual("erro")
+    })
+
+    it('Convertendo um valor positivo com vírgula', () => {
+        const resultado = converterAnos(1.1)
+
+        expect(resultado).toStrictEqual(["13.2", "401.5"])
+    })
+
+    it('Convertendo um valor negativo com vírgula', () => {
+        const resultado = converterAnos(-1.1)
+
+        expect(resultado).toStrictEqual("número inválido")
     })
 })
 
-/* describe('testando a função converterSec:  ', () =>{
+describe('testando a função mudarValor:  ', () =>{
+
+})
+
+describe('testando a função maior:  ', () =>{
+
+    it('testando números positivos', () => {
+        const resultado = maior(3, 2)
+
+        expect(resultado).toBe(3)
+    })
+
+    it('testando números negativos', () => {
+        const resultado = maior(1, -2)
+
+        expect(resultado).toBe(1)
+    })
+
+    it('testando letras', () => {
+        const resultado = maior(-2, 'b')
+
+        expect(resultado).toBe('erro')
+    })
+
+    it('testando números positivos com vírgula', () => {
+        const resultado = maior(1.2, 1.1)
+
+        expect(resultado).toBe(1.2)
+    })
+
+    it('testando números negativos com vírgula', () => {
+        const resultado = maior(1.2, -1.3)
+
+        expect(resultado).toBe(1.2)
+    })
+
+})
+/*   describe('testando a função converterSec:  ', () =>{
 
     it('', () => {
         const resultado = 
 
         expect(resultado).toStrictEqual([])
     })
-})
 
-describe('testando a função converterSec:  ', () =>{
+
+    describe('testando a função converterSec:  ', () =>{
 
     it('', () => {
         const resultado = 
 
         expect(resultado).toStrictEqual([])
     })
-})
 
-describe('testando a função converterSec:  ', () =>{
+
+    describe('testando a função converterSec:  ', () =>{
+
+    it('', () => {
+        const resultado = 
+
+        expect(resultado).toStrictEqual([])
+    })
+
+
+    describe('testando a função converterSec:  ', () =>{
 
     it('', () => {
         const resultado = 
