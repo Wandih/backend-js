@@ -1,6 +1,6 @@
 const express = require ('express')
 const path = require('path');
-const { somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior } = require('./service/exercicios');
+const { somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior, calcularMedia, calcularImc } = require('./service/exercicios');
 const app = express();
 app.use(express.json())
 
@@ -92,31 +92,17 @@ app.post("/exercicio8/", (req, res) =>{
 
     app.post("/exercicio9/", (req, res) =>{
 
-        const {nota1, nota2, nota3} = req.body
-        const media = (nota1 + nota2 + nota3)/3
+        const nota = calcularMedia(req.body.media)
 
-        if(media >= 7){
-            res.send(`Parabéns, você foi aprovado!`)
-        }else if(media < 7 & media >=5){
-            res.send(`Você está em recuperação`)
-        }else if (media < 5){
-            res.send(`Você foi reprovado`)
-        }
+        res.status(201).json({resultado: nota})
     });
 
     app.post("/exercicio10/", (req, res) =>{
 
-        const {gen, alt} = req.body
-        var imch = ((72.7*alt)-58).toFixed(2)
-        var imcm = ((62.1*alt)-44.7).toFixed(2)
+        const result = calcularImc(req.body.imch, req.body.imcm)
 
-        if(gen == 1){
-            res.send(`Seu IMC é igual a ${imch}`)
-        }else if(gen == 2){
-            res.send(`Seu IMC é igual a ${imcm}`)
-        }else if (gen != 1 && gen != 2){
-            res.send(`Gênero inválido, tente novamente`)
-        }
+        res.status(201).json({resultado: result})
+
     });
 
     app.post("/exercicio11/", (req, res) =>{

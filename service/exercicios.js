@@ -115,13 +115,77 @@ function maior (num1, num2){
     } else if (num1 < num2) {
 
         return num2
-        
+
     } else if (num1 === num2){
         
         return num1 && num2
     }
 }
 
+function calcularMedia (nota1, nota2, nota3, media){
+
+    if(isNaN(nota1) || isNaN(nota2) || isNaN(nota3)){
+
+        return 'erro'
+
+    }
+
+    if(nota1 < 0 || nota2 < 0 || nota3 <0){
+
+        return 'nota inválida'
+
+    }
+    
+    media = ((nota1 + nota2 + nota3)/3).toFixed(1)
+
+    if(media >= 7){
+
+        return 'aprovado'
+
+    } else if (media <7 && media >= 5){
+
+        return 'dá pra melhorar'
+
+    } else {
+        
+        return 'reprovado'
+
+    }
+}
+
+function calcularImc (gen, alt, imch, imcm){
+
+    if(isNaN(gen)){
+
+        return 'erro'
+
+    }
+
+    imch = ((72.7 * alt) -58).toFixed(2)
+
+    imcm = ((62.1 * alt) -44.7).toFixed(2)
+
+    if(gen === 1 && alt < 0){
+
+        return 'altura inválida'
+
+    } else if(gen === 2 && alt < 0){
+
+        return 'altura inválida'
+
+    } else if(gen === 1 && alt > 0){
+
+        return imch
+
+    } else if(gen === 2 && alt > 0){
+
+        return imcm
+
+    } else{
+
+        return 'opção inválida'
+    }
+}
 
 //module.exports = somar // Exportando default, uma única função
-module.exports = {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior}
+module.exports = {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior, calcularMedia, calcularImc}

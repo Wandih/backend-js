@@ -1,4 +1,4 @@
-const {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior} = require ('../service/exercicios');
+const {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior, calcularMedia, calcularImc} = require ('../service/exercicios');
 const {describe, it, expect} = require('@jest/globals');
 
 describe('testando a função somar:  ', () =>{
@@ -562,25 +562,82 @@ describe('testando a função maior:  ', () =>{
     })
 
 })
-/*   describe('testando a função converterSec:  ', () =>{
 
-    it('', () => {
-        const resultado = 
+describe('testando a função calcularMedia:  ', () =>{
 
-        expect(resultado).toStrictEqual([])
+    it('Calculando média com números inteiros positivos', () => {
+        const resultado = calcularMedia(5, 5, 6)
+
+        expect(resultado).toStrictEqual("dá pra melhorar")
     })
 
+    it('Calculando média com 2 números inteiros positivos e 1 negativo', () => {
+        const resultado = calcularMedia(5, 5, -6)
 
-    describe('testando a função converterSec:  ', () =>{
-
-    it('', () => {
-        const resultado = 
-
-        expect(resultado).toStrictEqual([])
+        expect(resultado).toStrictEqual("nota inválida")
     })
 
+    it('Calculando média com 1 números inteiro positivo e 2 negativos', () => {
+        const resultado = calcularMedia(5, -5, -6)
 
-    describe('testando a função converterSec:  ', () =>{
+        expect(resultado).toStrictEqual("nota inválida")
+    })
+
+    it('Calculando média com 3 números negativos', () => {
+        const resultado = calcularMedia(5, -5, -6)
+
+        expect(resultado).toStrictEqual("nota inválida")
+    })
+
+    it('Calculando média com 2 números inteiros positivos e uma letra', () => {
+        const resultado = calcularMedia('a', 5, 5)
+
+        expect(resultado).toStrictEqual("erro")
+    })
+
+    it('Calculando média com números positivos com vírgula', () => {
+        const resultado = calcularMedia(5.5, 5.5, 6.5)
+
+        expect(resultado).toStrictEqual("dá pra melhorar")
+    })
+
+    it('Calculando média com números positivos inteiros e com vírgula', () => {
+        const resultado = calcularMedia(5, 5.5, 6.5)
+
+        expect(resultado).toStrictEqual("dá pra melhorar")
+    })
+
+  })
+ 
+describe('testando a função calcularImc:  ', () =>{
+
+    it('Calculando IMC masculino usando valor exato', () => {
+        const resultado = calcularImc(1, 100)
+
+        expect(resultado).toStrictEqual("7212.00")
+    })
+
+    it('Calculando IMC feminino usando valor exato', () => {
+        const resultado = calcularImc(2, 100)
+
+        expect(resultado).toStrictEqual("6165.30")
+    })
+
+    it('Calculando IMC masculino usando valor exato negativo', () => {
+        const resultado = calcularImc(1, -100)
+
+        expect(resultado).toStrictEqual("altura inválida")
+    })
+
+    it('Calculando IMC feminino usando valor exato negativo', () => {
+        const resultado = calcularImc(2, -100)
+
+        expect(resultado).toStrictEqual("altura inválida")
+    })
+
+})
+
+/* describe('testando a função converterSec:  ', () =>{
 
     it('', () => {
         const resultado = 
