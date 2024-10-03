@@ -1,4 +1,4 @@
-const {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior, calcularMedia, calcularImc} = require ('../service/exercicios');
+const {somar, calcularSalario, calcularPeso, converterTemp, converterMilhas, converterSec, converterKms, tabuada, converterAnos, mudarValor, maior, calcularMedia, calcularImc} = require ('../src/services/exercicios');
 const {describe, it, expect} = require('@jest/globals');
 
 describe('testando a função somar:  ', () =>{
@@ -41,15 +41,15 @@ describe('testando a função somar:  ', () =>{
     })
 
     it('Somar um número com uma letra', () =>{
-        const resultado = somar (1,'a')
+        const funSomar =  () => somar (1,'a')
 
-        expect(resultado).toBe('erro')
+        expect(funSomar).toThrow('Informe um número')
     })
 
     it('Somar uma letra com um número', () =>{
-        const resultado = somar ('b',2)
+        const funSomar =  () => somar ('b',2)
 
-        expect(resultado).toBe('erro')
+        expect(funSomar).toThrow('Informe um número')
     })
 })
 
@@ -79,27 +79,27 @@ describe('testando a função calcularSalario:  ', () =>{
     })
 
     it('Multiplicar um número positivo com uma letra', () => {
-        const resultado = calcularSalario(1, 'a');
+        const funMulti = () => calcularSalario(1, 'a');
 
-        expect(resultado).toBe('erro')
+        expect(funMulti).toThrow('Informe um número')
     })
 
     it('Multiplicar uma letra com um número positivo', () => {
-        const resultado = calcularSalario('a', 1);
+        const funMulti = () => calcularSalario('a', 1);
 
-        expect(resultado).toBe('erro')
+        expect(funMulti).toThrow('Informe um número')
     })
 
     it('Multiplicar um número negativo com uma letra', () => {
-        const resultado = calcularSalario(-1, 'a');
+        const funMulti = () => calcularSalario(-1, 'a');
 
-        expect(resultado).toBe('erro')
+        expect(funMulti).toThrow('Informe um número')
     })
 
     it('Multiplicar uma letra com um número negativo', () => {
-        const resultado = calcularSalario('a', 1);
+        const funMulti = () => calcularSalario('a', 1);
 
-        expect(resultado).toBe('erro')
+        expect(funMulti).toThrow('Informe um número')
     })
 
     it('Multiplicar um número positivo com um número com vírgula', () => {
@@ -253,33 +253,33 @@ describe('testando a função calcularPeso:  ', () =>{
     })
 
     it('Calcular a média entre 4 números positivos e 1 letra', () => {
-        const resultado = calcularPeso(1, 1, 1, 1, 'a');
+        const funCal = () => calcularPeso(1, 1, 1, 1, 'a');
 
-        expect(resultado).toBe('erro')
+        expect(funCal).toThrow('Informe um número')
     })
 
     it('Calcular a média entre 4 números positivos e 1 letra', () => {
-        const resultado = calcularPeso(1, 1, 1, 'a', -1);
+        const funCal = () => calcularPeso(1, 1, 1, 'a', -1);
 
-        expect(resultado).toBe('erro')
+        expect(funCal).toThrow('Informe um número')
     })
 
     it('Calcular a média entre 4 números positivos e 1 letra', () => {
-        const resultado = calcularPeso(1, 1, 'a', -1, -1);
+        const funCal = () => calcularPeso(1, 1, 'a', -1, -1);
 
-        expect(resultado).toBe('erro')
+        expect(funCal).toThrow('Informe um número')
     })
 
     it('Calcular a média entre 4 números positivos e 1 letra', () => {
-        const resultado = calcularPeso(1, 'a', -1, -1, -1);
+        const funCal = () => calcularPeso(1, 'a', -1, -1, -1);
 
-        expect(resultado).toBe('erro')
+        expect(funCal).toThrow('Informe um número')
     })
 
     it('Calcular a média entre 4 números positivos e 1 letra', () => {
-        const resultado = calcularPeso('a', 1, -1, -1, -1);
+        const funCal = () => calcularPeso('a', 1, -1, -1, -1);
 
-        expect(resultado).toBe('erro')
+        expect(funCal).toThrow('Informe um número')
     })
 
     it('Calcular a média entre 4 números positivos inteiros e 1 número positivo com vírgula', () => {
@@ -335,9 +335,9 @@ describe('testando a função converterTemp:  ', () =>{
     })
 
     it('Convertendo uma letra', () => {
-        const resultado = converterTemp('a');
+        const conTemp = () => converterTemp('a');
 
-        expect(resultado).toBe('erro')
+        expect(conTemp).toThrow('Informe um número')
     })
 
 
@@ -365,9 +365,9 @@ describe('testando a função converterMilhas:  ', () =>{
     })
 
     it('Convertendo uma letra', () => {
-        const resultado = converterMilhas('a');
+        const funConv = () => converterMilhas('a');
 
-        expect(resultado).toBe('erro')
+        expect(funConv).toThrow('Informe um número')
     })
 
 
@@ -402,9 +402,9 @@ describe('testando a função converterSec:  ', () =>{
     })
 
     it('Convertendo uma letra', () => {
-        const resultado = converterSec('a');
+        const funCon = () => converterSec('a');
 
-        expect(resultado).toStrictEqual('erro')
+        expect(funCon).toThrow('Informe um número')
     })
 
 
@@ -449,9 +449,9 @@ describe('testando a função converterKms:  ', () =>{
     })
 
     it('Convertendo uma letra', () => {
-        const resultado = converterKms('a')
+        const funConve = () => converterKms('a')
 
-        expect(resultado).toStrictEqual('erro')
+        expect(funConve).toThrow('Informe um número')
     })
 
 
@@ -484,9 +484,9 @@ describe('testando a função tabuada:  ', () =>{
     })
 
     it('Tabuada de uma letra', () => {
-        const resultado = tabuada('a')
+        const funTab = () => tabuada('a')
 
-        expect(resultado).toStrictEqual("erro")
+        expect(funTab).toThrow('Informe um número')
     })
 
 
@@ -501,15 +501,15 @@ describe('testando a função converterAnos:  ', () =>{
     })
 
     it('Convertendo um valor negativo', () => {
-        const resultado = converterAnos(-1)
+        const funAn = () => converterAnos(-1)
 
-        expect(resultado).toStrictEqual("número inválido")
+        expect(funAn).toThrow('Número inválido')
     })
 
     it('Convertendo uma letra', () => {
-        const resultado = converterAnos('a')
+        const funAno = () => converterAnos('a')
 
-        expect(resultado).toStrictEqual("erro")
+        expect(funAno).toThrow('Informe um número')
     })
 
     it('Convertendo um valor positivo com vírgula', () => {
@@ -519,9 +519,9 @@ describe('testando a função converterAnos:  ', () =>{
     })
 
     it('Convertendo um valor negativo com vírgula', () => {
-        const resultado = converterAnos(-1.1)
+        const funAnos = () => converterAnos(-1.1)
 
-        expect(resultado).toStrictEqual("número inválido")
+        expect(funAnos).toThrow('Número inválido')
     })
 })
 
@@ -544,9 +544,9 @@ describe('testando a função maior:  ', () =>{
     })
 
     it('testando letras', () => {
-        const resultado = maior(-2, 'b')
+        const funMaior = () => maior(-2, 'b')
 
-        expect(resultado).toBe('erro')
+        expect(funMaior).toThrow('Informe um número')
     })
 
     it('testando números positivos com vírgula', () => {
@@ -572,27 +572,27 @@ describe('testando a função calcularMedia:  ', () =>{
     })
 
     it('Calculando média com 2 números inteiros positivos e 1 negativo', () => {
-        const resultado = calcularMedia(5, 5, -6)
+        const funNota = () => calcularMedia(5, 5, -6)
 
-        expect(resultado).toStrictEqual("nota inválida")
+        expect(funNota).toThrow("Nota Inválida")
     })
 
     it('Calculando média com 1 números inteiro positivo e 2 negativos', () => {
-        const resultado = calcularMedia(5, -5, -6)
+        const funNot = () => calcularMedia(5, -5, -6)
 
-        expect(resultado).toStrictEqual("nota inválida")
+        expect(funNot).toThrow("Nota Inválida")
     })
 
     it('Calculando média com 3 números negativos', () => {
-        const resultado = calcularMedia(5, -5, -6)
+        const funNo = () => calcularMedia(5, -5, -6)
 
-        expect(resultado).toStrictEqual("nota inválida")
+        expect(funNo).toThrow("Nota Inválida")
     })
 
     it('Calculando média com 2 números inteiros positivos e uma letra', () => {
-        const resultado = calcularMedia('a', 5, 5)
+        const funN = () => calcularMedia('a', 5, 5)
 
-        expect(resultado).toStrictEqual("erro")
+        expect(funN).toThrow("erro")
     })
 
     it('Calculando média com números positivos com vírgula', () => {
@@ -624,15 +624,15 @@ describe('testando a função calcularImc:  ', () =>{
     })
 
     it('Calculando IMC masculino usando valor exato negativo', () => {
-        const resultado = calcularImc(1, -100)
+        const funPeso = () => calcularImc(1, -100)
 
-        expect(resultado).toStrictEqual("altura inválida")
+        expect(funPeso).toThrow("altura inválida")
     })
 
     it('Calculando IMC feminino usando valor exato negativo', () => {
-        const resultado = calcularImc(2, -100)
+        const funPeso = () => calcularImc(2, -100)
 
-        expect(resultado).toStrictEqual("altura inválida")
+        expect(funPeso).toStrictEqual("altura inválida")
     })
 
 })
