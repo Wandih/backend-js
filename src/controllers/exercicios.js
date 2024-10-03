@@ -132,7 +132,7 @@ class ControllerExercícios {
     
     }
 
-    Des1 (req, res){
+    Des0 (req, res){
     
         try {
     
@@ -148,6 +148,130 @@ class ControllerExercícios {
         }
     
     }
-}
 
+    Des1 (req, res) {
+    
+        try {
+    
+            const result = ServiceExercicio.MudarValor(req.body.A, req.body.B)
+    
+        
+            res.status(201).json({mudanca: result})
+            
+        } catch (error) {
+            
+            res.status(422).json({msg: error.message})
+    
+        }
+        
+    }
+
+    Des2 (req, res) {
+    
+    
+        try {
+    
+            const result = ServiceExercicio.Maior(req.body.num1, req.body.num2)
+    
+            res.status(201).json({resultado: result})
+            
+        } catch (error) {
+    
+            res.status(422).json({msg: error.message})
+            
+        }
+    
+    }
+
+    Ex9 (req, res) {
+    
+        try {
+    
+            const nota = ServiceExercicio.CalcularMedia(req.body.media)
+    
+            res.status(201).json({resultado: nota})
+    
+        } catch (error) {
+            
+            res.status(422).json({msg: error.message})
+    
+        }
+      
+    }
+
+    Ex10 (req, res) {
+    
+        try {
+    
+            const result = ServiceExercicio.CalcularImc(req.body.imch, req.body.imcm)
+    
+            res.status(201).json({resultado: result})
+            
+        } catch (error) {
+          
+            res.status(422).json({msg: error.message})
+    
+        }
+    
+    }
+
+    Ex11 (req, res) {
+    
+    try {
+        const result = ServiceExercicio.Operação(req.body.op, req.body.num1, req.body.num2)
+
+        res.status(201).json({resultado: result})
+
+    } catch (error) {
+          
+        res.status(422).json({msg: error.message})
+
+        }
+
+    }
+
+    Ex12 (req, res) {
+    
+        try {
+            const result = ServiceExercicio.PON(req.body.num1)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+    }
+
+    Ex13 (req, res){
+    
+        try {
+            const result = ServiceExercicio.ImparPar(req.body.num1)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+    }
+
+    Ex14 (req, res){
+    
+        try {
+            const result = ServiceExercicio.MaiorQ(req.body.num1, req.body.num2)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+    }
+
+
+}
 module.exports = new ControllerExercícios()

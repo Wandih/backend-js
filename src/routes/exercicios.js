@@ -19,125 +19,23 @@ const router = express.Router()
     
     router.post("/exercicio8/", ControllerExercícios.Ex8);
     
-    router.post("/desafio0/", ControllerExercícios.Des1);
+    router.post("/desafio0/", ControllerExercícios.Des0);
     
-    router.post("/desafio1/", (req, res) =>{
+    router.post("/desafio1/", ControllerExercícios.Des1);
     
-        try {
+    router.post("/desafio2/", ControllerExercícios.Des2);
     
-            const result = mudarValor(req.body.A, req.body.B)
+    router.post("/exercicio9/", ControllerExercícios.Ex9);
     
-        
-            res.status(201).json({mudanca: result})
-            
-        } catch (error) {
-            
-            res.status(422).json({msg: error.message})
+    router.post("/exercicio10/", ControllerExercícios.Ex10);
     
-        }
-        
-    });
+    router.post("/exercicio11/", ControllerExercícios.Ex11);
     
-    router.post("/desafio2/", (req, res) =>{
+    router.post("/exercicio12/", ControllerExercícios.Ex12);
     
+    router.post("/exercicio13/", ControllerExercícios.Ex13);
     
-        try {
-    
-            const result = maior(req.body.num1, req.body.num2)
-    
-            res.status(201).json({resultado: result})
-            
-        } catch (error) {
-    
-            res.status(422).json({msg: error.message})
-            
-        }
-    
-    });
-    
-    router.post("/exercicio9/", (req, res) =>{
-    
-        try {
-    
-            const nota = calcularMedia(req.body.media)
-    
-            res.status(201).json({resultado: nota})
-    
-        } catch (error) {
-            
-            res.status(422).json({msg: error.message})
-    
-        }
-      
-    });
-    
-    router.post("/exercicio10/", (req, res) =>{
-    
-        try {
-    
-            const result = calcularImc(req.body.imch, req.body.imcm)
-    
-            res.status(201).json({resultado: result})
-            
-        } catch (error) {
-          
-            res.status(422).json({msg: error.message})
-    
-        }
-    
-    });
-    
-    router.post("/exercicio11/", (req, res) =>{
-    
-            const {op, num1, num2} = req.body
-    
-            if(op == 1){
-                res.send(`A soma dos numúmeros ${num1} e ${num2} é igual a ${num1 + num2}`)
-            }else if(op == 2){
-                res.send(`A subtração dos numúmeros ${num1} e ${num2} é igual a ${num1 - num2}`)
-            }else if (op == 3){
-                res.send(`A divisão dos numúmeros ${num1} e ${num2} é igual a ${num1 / num2}`)
-            }else if (op == 4){
-                res.send(`A multiplicação dos numúmeros ${num1} e ${num2} é igual a ${num1 * num2}`)
-            }else{
-                res.send(`Operação inválida`)
-            }
-    });
-    
-    router.post("/exercicio12/", (req, res) =>{
-    
-            const {num1} = req.body
-    
-            if(num1 >= 0){
-                res.send(`${num1} é um número positivo`)
-            }else{
-                res.send(`${num1} é um número negativo`)
-            }
-    });
-    
-    router.post("/exercicio13/", (req, res) =>{
-    
-            const {num1} = req.body
-    
-            if(num1 % 2 == 0){
-                res.send(`${num1} é um número par`)
-            }else{
-                res.send(`${num1} é um número ímpar`)
-            }
-    });
-    
-    router.post("/exercicio14/", (req, res) =>{
-    
-            var {num1, num2} = req.body
-    
-            if(num1 > num2){
-                res.send(`O número ${num1} é maior do que ${num2}`)
-            }else if(num2 > num1){
-                res.send(`O número ${num2} é maior do que ${num1}`)
-            }else{
-                res.send(`O número ${num1} é igual a ${num2}`)
-            }
-    });
+    router.post("/exercicio14/", ControllerExercícios.Ex14);
     
     router.post("/exercicio15/", (req, res) =>{
     
