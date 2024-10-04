@@ -306,6 +306,101 @@ class ServiceExercicio{
 
     }
 
+    Triangulo (a, b, c, base, altura, area){
+
+        if(isNaN(a) || isNaN(b) || isNaN(c) || isNaN(base) || isNaN(altura)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        area = ((base * altura)/2).toFixed(2)
+
+        if(a + b < c || a + c < b || b + c < a){
+            res.send(`Não é possível formar um triângulo`)
+        }
+
+        if(a === b || a === c || b === c){
+            res.send(`A área do triângulo isósceles é igual a ${area}`)
+        }else if(a === b && a === c && c === b){
+            res.send(`A área do triângulo equilátero é igual a ${area}`)
+        }else if (a != b && a != c && b != c){
+            res.send(`A área do triângulo escaleno é igual a ${area}`)
+        }
+
+    }
+
+    ImpRenda (cpf, dep, renda, des, sal){
+        
+        if(isNaN(cpf) || isNaN(dep) || isNaN(renda)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        des = (dep *5)/100
+
+        sal = renda - (renda * des).toFixed(2)
+
+        if(sal <= 2824.00){
+            res.send(`Você está isento de pagar imposto de renda.`)
+        }else if(sal > 2824.00 && sal <= 4236.00){
+            res.send(`Você deverá pagar R$${((sal * 5)/100).toFixed(2)} de imposto de renda.`)
+        }else if(sal > 4236.00 && sal <= 7060.00){
+            res.send(`Você deverá pagar R$${((sal * 10)/100).toFixed(2)} de imposto de renda.`)
+        }else if(sal > 7060.00 && sal <= 9884.00){
+            res.send(`Você deverá pagar R$${((sal * 15)/100).toFixed(2)} de imposto de renda.`)
+        }else if(sal > 9884.00){
+            res.send(`Você deverá pagar R$${((sal * 20)/100).toFixed(2)} de imposto de renda.`)
+        }
+
+    }
+
+    Menor (num1, num2, num3) {
+
+        if(isNaN(num1) || isNaN(num2) || isNaN(num3)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        if(num1 < num2 && num1 < num3 ){
+            res.send(`O número ${num1} é o menor número`)
+        }else if(num2 < num1 && num2 < num3){
+            res.send(`O número ${num2} é o menor número`)
+        }else{
+            res.send(`O número ${num3} é o menor número`)
+        }
+    }
+
+    AnoBis (ano) {
+
+        if(isNaN(ano)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        if(ano % 4 == 0){
+            res.send(`${ano} é um ano bissexto`)
+        }else{
+            res.send(`${ano} não é um ano bissexto `)
+        }
+    }
+
+    MediaPon (nota1, nota2, nota3, media){
+
+        if(isNaN(nota1) || isNaN(nota2) || isNaN(nota3)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        media = ((nota1 * 2) + (nota2 * 3) + (nota3 * 5))/(2 + 3 + 5)
+
+        return media
+
+    }
 
 
 

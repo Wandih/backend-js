@@ -37,69 +37,15 @@ const router = express.Router()
     
     router.post("/exercicio14/", ControllerExercícios.Ex14);
     
-    router.post("/exercicio15/", (req, res) =>{
+    router.post("/exercicio15/", ControllerExercícios.Ex15);
     
-            var {a, b, c, base, altura} = req.body
-            var area = (base * altura)/2
+    router.post("/exercicio16/", ControllerExercícios.Ex16);
     
-            if(a + b > c){
-                res.send(`A área do triângulo é igual a ${area}`)
-            }else{
-                res.send(`Os valores ${a}, ${b} e ${c} não formam um triângulo`)
-            }
-    });
+    router.post("/desafio3/", ControllerExercícios.Des3);
     
-    router.post("/exercicio16/", (req, res) =>{
+    router.post("/desafio4/", ControllerExercícios.Des4);
     
-            var {cpf, dep, renda} = req.body
-            var des = (dep *5)/100
-            sal = renda - (renda * des).toFixed(2)
-    
-            if(sal <= 2824.00){
-                res.send(`Você está isento de pagar imposto de renda.`)
-            }else if(sal > 2824.00 && sal <= 4236.00){
-                res.send(`Você deverá pagar R$${((sal * 5)/100).toFixed(2)} de imposto de renda.`)
-            }else if(sal > 4236.00 && sal <= 7060.00){
-                res.send(`Você deverá pagar R$${((sal * 10)/100).toFixed(2)} de imposto de renda.`)
-            }else if(sal > 7060.00 && sal <= 9884.00){
-                res.send(`Você deverá pagar R$${((sal * 15)/100).toFixed(2)} de imposto de renda.`)
-            }else if(sal > 9884.00){
-                res.send(`Você deverá pagar R$${((sal * 20)/100).toFixed(2)} de imposto de renda.`)
-            }
-    });
-    
-    router.post("/desafio3/", (req, res) =>{
-    
-            var {num1, num2, num3} = req.body
-    
-            if(num1 < num2 && num1 < num3 ){
-                res.send(`O número ${num1} é o menor número`)
-            }else if(num2 < num1 && num2 < num3){
-                res.send(`O número ${num2} é o menor número`)
-            }else{
-                res.send(`O número ${num3} é o menor número`)
-            }
-    });
-    
-    router.post("/desafio4/", (req, res) =>{
-    
-            const {ano} = req.body
-    
-            if(ano % 4 == 0){
-                res.send(`${ano} é um ano bissexto`)
-            }else{
-                res.send(`${ano} não é um ano bissexto `)
-            }
-    });
-    
-    router.post("/exercicio17/", (req, res) =>{
-    
-            const {nota1, nota2, nota3} = req.body
-            const media = ((nota1 * 2) + (nota2 * 3) + (nota3 * 5))/(2 + 3 + 5)
-    
-                res.send(`Sua média ponderada é igual a ${media}`)
-            
-    });
+    router.post("/exercicio17/", ControllerExercícios.Ex17);
     
     router.post("/exercicio18/", (req, res) =>{
     

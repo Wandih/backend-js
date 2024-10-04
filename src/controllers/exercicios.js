@@ -272,6 +272,81 @@ class ControllerExercícios {
         }
     }
 
+    Ex15 (req, res) {
+        
+        try {
+            const result = ServiceExercicio.Triangulo(req.body.a, req.body.b, req.body.c, req.body.altura, req.body.base, req.body.area)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+        
+    }
+
+    Ex16 (req, res) {
+    
+        try {
+            const result = ServiceExercicio.ImpRenda(req.body.cpf, req.body.dep, req.body.renda, req.body.des, req.body.sal)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+
+    }   
+
+    Des3 (req, res) {
+    
+
+        try {
+            const result = ServiceExercicio.ImpRenda(req.body.num1, req.body.num2, req.body.num3)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+
+    }
+
+    Des4 (req, res) {
+    
+        try {
+            const result = ServiceExercicio.AnoBis(req.body.ano)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+
+    }
+
+    Ex17 (req, res) {
+    
+        try {
+            const result = ServiceExercicio.MediaPon(req.body.nota1, req.body.nota2, req.body.nota3, req.body.media)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+        
+}
 
 }
 module.exports = new ControllerExercícios()
