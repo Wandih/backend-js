@@ -47,76 +47,30 @@ const router = express.Router()
     
     router.post("/exercicio17/", ControllerExercícios.Ex17);
     
-    router.post("/exercicio18/", (req, res) =>{
+    router.post("/exercicio18/", ControllerExercícios.Ex18);
     
-            const {fab} = req.body
-            const dis = ((fab * 28)/100)
-            const imp = ((fab * 45)/100)
-            const custo = (fab + dis + imp)
+    router.post("/exercicio19/", ControllerExercícios.Ex19);
     
-                res.send(`O custo ao consumidor do veículo será R$${(custo).toFixed(2)}.`)
-    });
+    router.post("/exercicio20/", ControllerExercícios.Ex20);
+
+    router.post("/exercicio21", ControllerExercícios.Ex21);
     
-    router.post("/exercicio19/", (req, res) =>{
+    router.post("/exercicio22", ControllerExercícios.Ex22);
     
-            const {valor, taxa, tempo} = req.body
-            const juros = (valor * taxa)* tempo
-            const valor2 = (valor + juros)
-    
-                res.send(`O capital de valor R$${valor} e juros de R$${(juros).toFixed(2)} possui o valor montante de R$${(valor2).toFixed(2)}`)
-    });
-    
-    router.post("/exercicio20/", (req, res) =>{
-    
-            const {ipi, valor1, quantia1, valor2, quantia2} = req.body
-            const soma = (valor1 * quantia1) * (valor2 * quantia2)
-            const porcento = (ipi/100)+1
-            const total = soma * porcento
-        
-                res.send(`O valor total a ser é pago é R$${(total).toFixed(2)}`)
-    });
-    
-    router.post("/exercicio21", (req, res) =>{
-    
-            const {r1, r2, r3, r4, r5, r6, r7, r8} = req.body
-            const soma = r1 + r2 + r3 + r4 + r5 + r6 + r7 + r8
-            
-            if(soma == 4 ){
-                res.send(`Pessoa classificada como Suspeita do Crime.`)
-            }else if(soma >= 5 & soma <= 7 ){
-                res.send(`Pessoa classificada como Possível Criminosa.`)
-            }else if(soma == 8){
-                res.send(`Pessoa classificada como Assassina.`)
-            }else if(soma <=3){
-                res.send(`Pessoa classificada como Inocente.`)
-            }
-            
-    });
-    
-    router.post("/exercicio22", (req, res) =>{
-    
-            const {limite, vel} = req.body
-            const multa = (limite) + ((limite *20)/100)
-            
-            if(vel <= limite){
-                res.send(`O motorista não receberá multa.`)
-            }else if(vel > limite && vel <= multa){
-                res.send(` O motorista receberá R$102,00 de multa.`)
-            }else if(vel > multa){
-                res.send(` O motorista receberá R$500,00 de multa.`)
-            }
-    });
-    
-    router.post("/exercicio23", (req, res) =>{
-    
-            const {num1} = req.body
-    
-    
-            do{
-                res.send(`Batata`)
-            }while(num1 == 1)
-        
-                res.send(`Cenoura`)
-    });
+    router.post("/exercicio23", ControllerExercícios.Ex23);
+
+    router.post("/exercicio24", ControllerExercícios.Ex24);
+
+    router.post("/exercicio25", );
+
+    router.post("/exercicio26", );
+
+    router.post("/exercicio27", );
+
+    router.post("/exercicio28", );
+
+    router.post("/exercicio29", );
+
+    router.post("/exercicio30", );
 
 module.exports = router;

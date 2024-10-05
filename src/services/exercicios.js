@@ -42,23 +42,23 @@ class ServiceExercicio{
             throw new Error('Informe um número');
 
     }
-        return (milhas * 1.60934)
+        return (milhas * 1.60934).toFixed(2)
 }
     
-    ConverterSec (segundos){
+    ConverterSec (segundos, convert){
         if(isNaN(segundos)){
 
             throw new Error('Informe um número');
 
         }
         return convert = [
-            (Number(segundos) * 0.01666668), 
-            (Number(segundos) * 0.000277778)
+            (Number(segundos) * 0.01666668).toFixed(2), 
+            (Number(segundos) * 0.000277778).toFixed(2)
     ]
           
 }
     
-    ConverterKms (kms){
+    ConverterKms (kms, convert){
         if(isNaN(kms)){
 
             throw new Error('Informe um número');
@@ -71,7 +71,7 @@ class ServiceExercicio{
           
 }
     
-    Tabuada (num){
+    Tabuada (num, tab){
         if(isNaN(num)){
 
             throw new Error('Informe um número');
@@ -92,7 +92,7 @@ class ServiceExercicio{
     ]
 }
     
-    ConverterAnos (anos){
+    ConverterAnos (anos, convert){
         if(isNaN(anos)){
 
             throw new Error('Informe um número');
@@ -154,7 +154,7 @@ class ServiceExercicio{
     
         }
     
-        if(nota1 < 0 || nota2 < 0 || nota3 <0){
+        if(nota1 < 0 || nota2 < 0 || nota3 < 0){
     
             throw new Error('Nota Inválida');
     
@@ -197,11 +197,11 @@ class ServiceExercicio{
     
             return 'altura inválida'
     
-        } else if(gen === 1 && alt > 0){
+        } else if(gen === 1){
     
             return imch
     
-        } else if(gen === 2 && alt > 0){
+        } else if(gen === 2){
     
             return imcm
     
@@ -219,7 +219,7 @@ class ServiceExercicio{
     
         }
 
-        if(op > 4 && op < 0){
+        if(op > 4 || op <= 0){
             throw new Error('Opção inválida. Tente Novamente');
         }
 
@@ -278,11 +278,11 @@ class ServiceExercicio{
 
         if(num1 % 2 === 0){
     
-            return 'Esse número é positivo'
+            return 'Esse número é par'
     
         }else{
     
-            return 'Esse número é negativo'
+            return 'Esse número é impar'
 
     }
 
@@ -297,11 +297,17 @@ class ServiceExercicio{
         }
 
         if(num1 > num2){
-            res.send(`O número ${num1} é maior do que ${num2}`)
+
+            return `O número ${num1} é maior do que ${num2}`
+
         }else if(num2 > num1){
-            res.send(`O número ${num2} é maior do que ${num1}`)
+
+            return `O número ${num2} é maior do que ${num1}`
+
         }else{
-            res.send(`O número ${num1} é igual a ${num2}`)
+
+            return `O número ${num1} é igual a ${num2}` 
+
         }
 
     }
@@ -314,18 +320,25 @@ class ServiceExercicio{
     
         }
 
-        area = ((base * altura)/2).toFixed(2)
+        area = ((base * altura)/2)
 
-        if(a + b < c || a + c < b || b + c < a){
-            res.send(`Não é possível formar um triângulo`)
+        if(a + b < c && a + c < b && b + c < a){
+
+            return `Não é possível formar um triângulo`
         }
 
         if(a === b || a === c || b === c){
-            res.send(`A área do triângulo isósceles é igual a ${area}`)
+
+            return `A área do triângulo isósceles é igual a ${area}`
+
         }else if(a === b && a === c && c === b){
-            res.send(`A área do triângulo equilátero é igual a ${area}`)
+
+            return `A área do triângulo equilátero é igual a ${area}`
+
         }else if (a != b && a != c && b != c){
-            res.send(`A área do triângulo escaleno é igual a ${area}`)
+
+            return`A área do triângulo escaleno é igual a ${area}`
+
         }
 
     }
@@ -402,9 +415,150 @@ class ServiceExercicio{
 
     }
 
+    CAO (fab, dis, imp, custo){
+        
+        if(fab){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        dis = ((fab * 28)/100)
+        imp = ((fab * 45)/100)
+        custo = (fab + dis + imp)
+
+        return (custo).toFixed(2)
+    }
+
+    ValorMont (valor, taxa, tempo, juros, valor2){
+
+        if(isNaN(valor) || isNaN(taxa) || isNaN(tempo)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        juros = (valor * taxa)* tempo
+        valor2 = (valor + juros).toFixed(2)
+
+        return valor2
+    }
+
+    IPI (ipi, valor1, quantia1, valor2, quantia2, total){
+
+        if(isNaN(ipi) || isNaN(valor1) || isNaN(quantia1) || isNaN(valor2) || isNaN(quantia2)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        total = (((valor1 * quantia1) + (valor2 * quantia2)) * (ipi/100))+1
+
+        return (total).toFixed(2)
+
+    }
+
+    Questionario (r1, r2, r3, r4, r5, r6, r7, r8, soma){
+        
+        if(isNaN(r1) || isNaN(r2) || isNaN(r3) || isNaN(r4) || isNaN(r5) || isNaN(r6) || isNaN(r7) || isNaN(r8)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        soma = r1 + r2 + r3 + r4+ r5 + r6 + r7 + r8
+
+        if(soma == 4 ){
+            res.send(`Pessoa classificada como Suspeita do Crime.`)
+        }else if(soma >= 5 & soma <= 7 ){
+            res.send(`Pessoa classificada como Possível Criminosa.`)
+        }else if(soma == 8){
+            res.send(`Pessoa classificada como Assassina.`)
+        }else if(soma <=3){
+            res.send(`Pessoa classificada como Inocente.`)
+        }
 
 
+    }
+
+    Multa (limite, vel, multa){
+        
+        if(isNaN(limite) || isNaN(vel) || isNaN(multa)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        multa = (limite) + ((limite *20)/100)
+
+        if(vel <= limite){
+            res.send(`O motorista não receberá multa.`)
+        }else if(vel > limite && vel <= multa){
+            res.send(` O motorista receberá R$102,00 de multa.`)
+        }else if(vel > multa){
+            res.send(` O motorista receberá R$500,00 de multa.`)
+        }
+
+    }
+
+    Batata (num1){
+
+        if(isNaN(num1)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        while(num1 === 1){
+
+            return 'Batata'
+
+        }
+
+        return 'Cenoura'
+
+    }
+
+    Tabuada2 (num1){
+        
+        if(isNaN(num1)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        
+
+        
+        for(let i = 0; i < 10; i++){
+
+            `${num1} X ${i} = ${num1 * i}`
+            
+        }
+
+        return `${num1} X ${i} = ${num1 * i}`
+    }
+
+
+    PesoMedia (qtd, media){
+
+        if(isNaN(qtd)){
+    
+            throw new Error('Informe um número');
+    
+        }
+
+        for (let i = 0; 0 <= qtd; i++){
+
+        }
+
+    }
 }
+
+    
+    
+
+
 
 
 

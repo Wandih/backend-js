@@ -187,7 +187,7 @@ class ControllerExercícios {
     
         try {
     
-            const nota = ServiceExercicio.CalcularMedia(req.body.media)
+            const nota = ServiceExercicio.CalcularMedia(req.body.nota1, req.body.nota2, req.body.nota3, req.body.media)
     
             res.status(201).json({resultado: nota})
     
@@ -203,7 +203,7 @@ class ControllerExercícios {
     
         try {
     
-            const result = ServiceExercicio.CalcularImc(req.body.imch, req.body.imcm)
+            const result = ServiceExercicio.CalcularImc(req.body.gen, req.body.alt, req.body.imch, req.body.imcm)
     
             res.status(201).json({resultado: result})
             
@@ -346,7 +346,110 @@ class ControllerExercícios {
     
         }
         
-}
+    }
+
+    Ex18 (req, res) {
+        
+        try {
+            const result = ServiceExercicio.CAO(req.body.fab, req.body.dis, req.body.imp, req.body.custo)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+        
+    }
+
+    Ex19 (req, res) {
+    
+        try {
+            const result = ServiceExercicio.ValorMont(req.body.valor, req.body.taxa, req.body.tempo, req.body.juros, req.body.valor2)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+
+    }
+
+    Ex20 (req, res) {
+        
+        try {
+            const result = ServiceExercicio.IPI(req.body.ipi, req.body.valor1, req.body.quantia1, req.body.valor2, req.body.quantia2, req.body.total)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+
+    }
+
+    Ex21 (req, res) {
+    
+        try {
+            const result = ServiceExercicio.Questionario(req.body.r1, req.body.r2, req.body.r3, req.body.r4, req.body.r5, req.body.r6, req.body.r7, req.body.r8, req.body.soma)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+        
+    }
+
+    Ex22 (req, res) {
+    
+        try {
+            const result = ServiceExercicio.Questionario(req.body.limite, req.body.vel, req.body.multa)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+        
+    }
+
+    Ex23 (req, res){
+    
+        try {
+            const result = ServiceExercicio.Batata(req.body.num1)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+    } 
+    
+    Ex24 (req, res){
+    
+        try {
+            const result = ServiceExercicio.Tabuada2(req.body.num1)
+    
+            res.status(201).json({resultado: result})
+    
+        } catch (error) {
+              
+            res.status(422).json({msg: error.message})
+    
+        }
+    }
 
 }
 module.exports = new ControllerExercícios()
